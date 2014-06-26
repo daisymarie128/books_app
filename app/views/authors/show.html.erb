@@ -1,0 +1,26 @@
+
+
+<div class="singleauthor">
+  <div class="singleimage">
+    <%= image_tag(@author.image, :class => 'medium') %>
+  </div><!--//////////close singleimage/////-->
+    <div class="singleline">
+    </div><!--//////////close singleline/////-->
+  <div class="singleinfoauthor">
+    <h2><%= @author.name %></h2>
+    <ul>
+      <li><%= @author.nationality %></li>
+  <li><%= @author.dob.strftime('%B %d %Y') if @author.dob %></li>
+    </ul>
+    <li><%= link_to('Edit', edit_author_path(@author)) %></li>
+    <li><%= link_to('Delete', @author, :data => {:confirm => 'Are you sure?', :method => :delete}) %></li>
+  </div><!--/////close singleinfoauthor/////-->
+
+
+  <div class="booksauthor">
+    <% @author.books.each do |book| %>
+    <%= link_to(image_tag(book.image, :class => 'thumb'),book) %>
+      <% end %>
+  </div><!--///////close booksauthor ///////-->
+
+</div><!--/////close singleauthor/////-->
